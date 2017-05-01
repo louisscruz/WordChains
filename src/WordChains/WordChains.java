@@ -17,15 +17,17 @@ public class WordChains {
     private Set<String> dictionary;
     private HashMap<String, String> allWords;
     private Set<String> currentWords;
+    private Boolean levenshtein;
 
-    public WordChains(Set<String> dictionary) {
+    public WordChains(Set<String> dictionary, Boolean levenshtein) {
         this.dictionary = dictionary;
         this.allWords = new HashMap<String, String>(1);
         this.currentWords = new HashSet<String>(1);
+        this.levenshtein = levenshtein;
     }
 
     public ArrayList<String> run(String source, String target) {
-        if (source.length() != target.length()) throw new IllegalArgumentException();
+        if (!this.levenshtein && (source.length() != target.length())) throw new IllegalArgumentException();
         this.currentWords.add(source);
         this.allWords.put(source, null);
         while (!this.currentWords.isEmpty() && !this.allWords.containsKey(target)) {
@@ -43,8 +45,19 @@ public class WordChains {
                     this.allWords.put(adjacentWord, currentWord);
                 }
             }
+            Set<String> adjacentWords = this.levenshtein ? this.levenshteinAdjacentWords(currentWord) : this.adjacentWords(currentWord);
+            for (String word : adjacentWords) {
+                if (!this.allWords.containsKey(word)) {
+                    newCurrentWords.add(word);
+                    this.allWords.put(word, currentWord);
+                }
+            }
         }
         this.currentWords = newCurrentWords;
+    }
+
+    private Boolean properWord(String word) {
+        return this.dictionary.contains(word) && !this.allWords.containsKey(word);
     }
 
     private Set<String> adjacentWords(String word) {
@@ -52,8 +65,29 @@ public class WordChains {
         for (int i = 0; i < word.length(); i++) {
             for (char c = 'a'; c <= 'z'; c++) {
                 String newWord = word.substring(0, i) + c + word.substring(i + 1);
-                if (this.dictionary.contains(newWord) && !this.allWords.containsKey(newWord)) {
+                if (this.properWord(newWord)) {
                     adjacentWordSet.add(newWord);
+                }
+            }
+        }
+        return adjacentWordSet;
+    }
+
+    private Set<String> levenshteinAdjacentWords(String word) {
+        Set<String> adjacentWordSet = new HashSet<String>(0);
+        for (int i = 0; i < word.length(); i++) {
+            String slicedNewWord = word.substring(0, i) + word.substring(i + 1);
+            if (this.properWord(slicedNewWord)) {
+                adjacentWordSet.add(slicedNewWord);
+            }
+            for (char c = 'a'; c <= 'z'; c++) {
+                String newWord = word.substring(0, i) + c + word.substring(i + 1);
+                if (this.properWord(newWord)) {
+                    adjacentWordSet.add(newWord);
+                }
+                String addedNewWord = word.substring(0, i) + c + word.substring(i);
+                if (this.properWord(addedNewWord)) {
+                    adjacentWordSet.add(addedNewWord);
                 }
             }
         }
@@ -86,11 +120,18 @@ public class WordChains {
         } catch(IOException ex) {
             System.out.println("Error reading line");
         }
-        WordChains wordChains = new WordChains(dictionary);
+        WordChains wordChains = new WordChains(dictionary, false);
         long startTime = System.currentTimeMillis();
         ArrayList<String> path = wordChains.run("ding", "camp");
         long endTime = System.currentTimeMillis();
         System.out.println("Total execution time: " + (endTime - startTime) + "ms");
         System.out.println(path);
+
+        WordChains levenshteinWordChains = new WordChains(dictionary, true);
+        long otherStartTime = System.currentTimeMillis();
+        ArrayList<String> otherPath = levenshteinWordChains.run("ding", "dinner");
+        long otherEndTime = System.currentTimeMillis();
+        System.out.println("Total execution time: " + (otherEndTime - otherStartTime) + "ms");
+        System.out.println(otherPath);
     }
 }
