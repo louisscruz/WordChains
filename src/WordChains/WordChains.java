@@ -31,6 +31,7 @@ public class WordChains {
         this.currentWords.add(source.toLowerCase());
         this.allWords.put(source.toLowerCase(), null);
         while (!this.currentWords.isEmpty() && !this.allWords.containsKey(target.toLowerCase())) {
+            System.out.println(this.currentWords);
             this.exploreCurrentWords();
         }
         return this.buildPath(source.toLowerCase(), target.toLowerCase());
@@ -60,8 +61,7 @@ public class WordChains {
         return this.dictionary.contains(word) && !this.allWords.containsKey(word);
     }
 
-    private Set<String> adjacentWords(String word) {
-        Set<String> adjacentWordSet = new HashSet<String>(0);
+    private void addEquivalentLengthAdjacents(Set<String> adjacentWordSet, String word) {
         for (int i = 0; i < word.length(); i++) {
             for (char c = 'a'; c <= 'z'; c++) {
                 String newWord = word.substring(0, i) + c + word.substring(i + 1);
@@ -70,27 +70,39 @@ public class WordChains {
                 }
             }
         }
-        return adjacentWordSet;
     }
 
-    private Set<String> levenshteinAdjacentWords(String word) {
-        Set<String> adjacentWordSet = new HashSet<String>(0);
+    private void addSmallerLengthAdjacents(Set<String> adjacentWordSet, String word) {
         for (int i = 0; i < word.length(); i++) {
-            String slicedNewWord = word.substring(0, i) + word.substring(i + 1);
-            if (this.properWord(slicedNewWord)) {
-                adjacentWordSet.add(slicedNewWord);
+            String newWord = word.substring(0, i) + word.substring(i + 1);
+            if (this.properWord(newWord)) {
+                adjacentWordSet.add(newWord);
             }
+        }
+    }
+
+    private void addLargerLengthAdjacents(Set<String> adjacentWordSet, String word) {
+        for (int i = 0; i <= word.length(); i++) {
             for (char c = 'a'; c <= 'z'; c++) {
-                String newWord = word.substring(0, i) + c + word.substring(i + 1);
-                if (this.properWord(newWord)) {
-                    adjacentWordSet.add(newWord);
-                }
                 String addedNewWord = word.substring(0, i) + c + word.substring(i);
                 if (this.properWord(addedNewWord)) {
                     adjacentWordSet.add(addedNewWord);
                 }
             }
         }
+    }
+
+    private Set<String> adjacentWords(String word) {
+        Set<String> adjacentWordSet = new HashSet<String>(0);
+        this.addEquivalentLengthAdjacents(adjacentWordSet, word);
+        return adjacentWordSet;
+    }
+
+    private Set<String> levenshteinAdjacentWords(String word) {
+        Set<String> adjacentWordSet = new HashSet<String>(0);
+        this.addSmallerLengthAdjacents(adjacentWordSet, word);
+        this.addEquivalentLengthAdjacents(adjacentWordSet, word);
+        this.addLargerLengthAdjacents(adjacentWordSet, word);
         return adjacentWordSet;
     }
 
