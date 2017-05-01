@@ -24,19 +24,6 @@ public class WordChains {
         this.currentWords = new HashSet<String>(1);
     }
 
-    public Set<String> adjacentWords(String word) {
-        Set<String> adjacentWordSet = new HashSet<String>(0);
-        for (int i = 0; i < word.length(); i++) {
-            for (char c = 'a'; c <= 'z'; c++) {
-                String newWord = word.substring(0, i) + c + word.substring(i + 1);
-                if (this.dictionary.contains(newWord) && !this.allWords.containsKey(newWord)) {
-                    adjacentWordSet.add(newWord);
-                }
-            }
-        }
-        return adjacentWordSet;
-    }
-
     public ArrayList<String> run(String source, String target) {
         if (source.length() != target.length()) throw new IllegalArgumentException();
         this.currentWords.add(source);
@@ -58,6 +45,19 @@ public class WordChains {
             }
         }
         this.currentWords = newCurrentWords;
+    }
+
+    private Set<String> adjacentWords(String word) {
+        Set<String> adjacentWordSet = new HashSet<String>(0);
+        for (int i = 0; i < word.length(); i++) {
+            for (char c = 'a'; c <= 'z'; c++) {
+                String newWord = word.substring(0, i) + c + word.substring(i + 1);
+                if (this.dictionary.contains(newWord) && !this.allWords.containsKey(newWord)) {
+                    adjacentWordSet.add(newWord);
+                }
+            }
+        }
+        return adjacentWordSet;
     }
 
     private ArrayList<String> buildPath(String source, String target) {
