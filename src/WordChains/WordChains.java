@@ -28,12 +28,12 @@ public class WordChains {
 
     public ArrayList<String> run(String source, String target) {
         if (!this.levenshtein && (source.length() != target.length())) throw new IllegalArgumentException();
-        this.currentWords.add(source);
-        this.allWords.put(source, null);
-        while (!this.currentWords.isEmpty() && !this.allWords.containsKey(target)) {
+        this.currentWords.add(source.toLowerCase());
+        this.allWords.put(source.toLowerCase(), null);
+        while (!this.currentWords.isEmpty() && !this.allWords.containsKey(target.toLowerCase())) {
             this.exploreCurrentWords();
         }
-        return this.buildPath(source, target);
+        return this.buildPath(source.toLowerCase(), target.toLowerCase());
     }
 
     private void exploreCurrentWords() {

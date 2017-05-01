@@ -16,18 +16,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="WordChains.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WordChains.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WordChains/WordChains.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1824">
-              <caret line="126" column="84" lean-forward="true" selection-start-line="126" selection-start-column="84" selection-end-line="126" selection-end-column="84" />
+            <state relative-caret-position="525">
+              <caret line="35" column="72" lean-forward="false" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1304#1312#0" expanded="true" />
-                <element signature="e#2341#2349#0" expanded="true" />
-                <element signature="e#2827#2835#0" expanded="true" />
-                <element signature="e#3807#3815#0" expanded="true" />
-                <element signature="e#4151#4159#0" expanded="true" />
+                <element signature="e#1374#1382#0" expanded="true" />
+                <element signature="e#2411#2419#0" expanded="true" />
+                <element signature="e#2897#2905#0" expanded="true" />
+                <element signature="e#3877#3885#0" expanded="true" />
+                <element signature="e#4221#4229#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -80,9 +80,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/WordChains/WordChains.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/WordChains/WordChains.java" />
       </list>
     </option>
   </component>
@@ -114,6 +114,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="WordChains" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WordChains" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WordChains" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WordChains" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WordChains" />
@@ -493,21 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/WordChains/WordChains.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1824">
-          <caret line="126" column="84" lean-forward="true" selection-start-line="126" selection-start-column="84" selection-end-line="126" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1304#1312#0" expanded="true" />
-            <element signature="e#2341#2349#0" expanded="true" />
-            <element signature="e#2827#2835#0" expanded="true" />
-            <element signature="e#3807#3815#0" expanded="true" />
-            <element signature="e#4151#4159#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -521,6 +524,21 @@
         <state relative-caret-position="225">
           <caret line="15" column="129" lean-forward="false" selection-start-line="15" selection-start-column="129" selection-end-line="15" selection-end-column="129" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WordChains/WordChains.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="72" lean-forward="false" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1374#1382#0" expanded="true" />
+            <element signature="e#2411#2419#0" expanded="true" />
+            <element signature="e#2897#2905#0" expanded="true" />
+            <element signature="e#3877#3885#0" expanded="true" />
+            <element signature="e#4221#4229#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
